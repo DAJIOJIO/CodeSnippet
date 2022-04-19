@@ -1,0 +1,26 @@
+class Solution {
+    public int search(int[] nums, int target) {
+        int min= 0;int max = nums.length -1;
+        if(target > nums[max] || target < nums[min] ){
+            return -1;
+        }
+
+        if(target == nums[min]){
+            return min;
+        }else if(target == nums[max]){
+            return max;
+        }
+
+        while(min != (max + min) /2){
+            int middle = (max + min)/2;
+            if(nums[middle] == target){
+                return middle;
+            }else if(target > nums[middle]){
+                min = middle;
+            }else{
+                max = middle;
+            }
+        }
+        return -1;
+    }
+}
