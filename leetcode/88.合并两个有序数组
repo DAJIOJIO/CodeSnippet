@@ -1,6 +1,7 @@
 
 
-// 想法是对nums1数据进行遍历，然后对数据nums2数据一个个比对再插入
+// 想法是对nums1数据进行遍历，然后对数据nums2数据一个个比对然后将数据后退再插入，这是个笨方法
+
 
 class Solution {
     public void merge(int[] nums1, int m, int[] nums2, int n) {
