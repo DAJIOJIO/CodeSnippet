@@ -1,6 +1,6 @@
 
 
-
+// 想法是对nums1数据进行遍历，然后对数据nums2数据一个个比对再插入
 
 class Solution {
     public void merge(int[] nums1, int m, int[] nums2, int n) {
