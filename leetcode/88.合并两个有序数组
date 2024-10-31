@@ -1,0 +1,30 @@
+
+
+
+
+class Solution {
+    public void merge(int[] nums1, int m, int[] nums2, int n) {
+        if (m == 0 || n == 0) {
+            if (n != 0) System.arraycopy(nums2, 0, nums1, 0, n);
+            System.out.println(Arrays.toString(nums1));
+        }else {
+            int j = 0;
+            for (int i = 0; i < m + n ; i++) {
+                if(j >= n) break;
+                // 判断是否已经对数组nums1中有效数据比对完毕，避免与nums1后面无效的数据比对
+                // 因为此处为循环开头i已经加1，且j并非一定为已加入数量，所以条件应设为i - j >= m（不论nums2是否已经有数据插入nums1，要进入nums1有效位置，i和j的差衡大于等于m值）
+                if(i - j >= m ) {
+                    System.arraycopy(nums2, j, nums1, i, n-j);
+                    break;
+                }
+                while (nums1[i] > nums2[j]) {
+                    for (int k = m + n - 1; k > i; k--) {
+                        nums1[k] = nums1[k - 1];
+                    }
+                    nums1[i] = nums2[j++];
+                    break;
+                }
+            }
+        }
+    }
+}
