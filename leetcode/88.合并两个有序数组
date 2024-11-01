@@ -29,3 +29,26 @@ class Solution {
         }
     }
 }
+
+// 双指针法，利用两个数组的有序性，将两个数组看作两个队列，将队列中第一个数据进行比较取最小的排出队列
+
+class Solution {
+    public void merge(int[] nums1, int m, int[] nums2, int n) {
+        int i = 0, j = 0;
+        int[] result = new int[m + n];
+        while (i < m && j < n) {
+            if(nums1[i] < nums2[j]) {
+                result[i + j] = nums1[i++];
+            }else {
+                result[i + j] = nums2[j++];
+            }
+        }
+        if (i >= m) {
+            System.arraycopy(nums2, j, result, i + j, n - j);
+            System.arraycopy(result, 0, nums1, 0, m + n);
+        }else {
+            System.arraycopy(nums1, i, result, i + j, m - i);
+            System.arraycopy(result, 0, nums1, 0, m + n);
+        }
+    }
+}
